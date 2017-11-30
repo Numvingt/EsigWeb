@@ -1,0 +1,65 @@
+h1 
+{
+    font-size : 25pt; 
+    font-weight: bold ;
+    color: dimgray;
+    text-align: center; 
+}
+h2 
+{
+  font-weight: bold ;
+  font-size : 20pt; 
+  color:  dimgray;
+}
+
+p 
+{font-size : 15pt;
+ text-align: center; 
+  
+}
+.mep{
+  margin-left:60px;
+  color: black;
+  font-size : 10pt;
+  float:left;
+  width:350px;
+  
+ 
+}
+
+.mep1{
+    margin-right:32px;
+    color: black;
+    font-size : 10pt;
+    float:right;
+    width:200px;    
+}
+
+.centrepage
+{
+    width: 800px; 
+    margin: auto;
+}
+
+.min{ 
+    margin-left:50px;
+  float:left;
+  width:340px;}
+
+#photo{
+
+
+    width: 55%;
+    height: 55%;
+}
+
+.min2{
+    margin-top: 80px;
+    margin-right:47px;
+    margin-bottom: 80px;
+    padding-right:40px; 
+    float:right;
+    width:320px;
+}
+
+body { background-color: gainsboro ;}

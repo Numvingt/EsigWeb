@@ -1,12 +1,15 @@
 body{
   text-align: center;
-    background-color: cadetblue;
-
 }
 
 ul{
   text-align: justify;
   
+}
+
+#contenu{
+	    width: 600px; 
+    margin: auto;
 }
 
 #portrait{
