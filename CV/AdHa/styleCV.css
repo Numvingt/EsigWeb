@@ -15,8 +15,8 @@ h2
 p 
 {font-size : 15pt;
  text-align: center; 
-  
 }
+
 .mep{
   margin-left:60px;
   color: black;
@@ -32,7 +32,8 @@ p
     color: black;
     font-size : 10pt;
     float:right;
-    width:200px;    
+    width:200px; 
+	margin-bottom:60px;
 }
 
 .centrepage
@@ -47,8 +48,6 @@ p
   width:340px;}
 
 #photo{
-
-
     width: 55%;
     height: 55%;
 }
