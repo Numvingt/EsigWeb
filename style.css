@@ -4,17 +4,20 @@
     white-space: nowrap;
 }
 
+/*
 #title p {
     color: white;
     text-align: center;
     padding: 14px;
     text-decoration: none;
 }
+*/
 
 #title img {
     display: block;
     margin-left: auto;
     margin-right: auto; 
+	width : 100px;
 }
 
 div.scrollmenu {
