@@ -11,32 +11,17 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <header>
-            <section id="title">
-              <!--- titre du site ici --->          
-                <img src="img/logo2.png" alt="logo" /> 
-            </section>
-            <section id="topmenu">
-                <!--- Menu ici --->
-                <div class="scrollmenu">
-                  <a href="index.html" class="fa fa-home fa-3x"></a>
-                  <a href="CV_Menu.html" class="active fa fa-book fa-3x"></a>
-                </div>
-            </section>
-        </header>
+<?php include("includes/mainMenu.php"); ?>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-10">
                     <section id="contenu">
 					<!--- Contenu du CV ici --->
-                    </section>         
-                </div>        
-            </div>   
+                    </section>
+                </div>
+            </div>
         </div>
-	        <footer>
-                <!--- Crédit créateurs ici --->
-                <p>Site réalisé par la classe ESIG-A-1</p>
-        </footer>
+<?php include("includes/footer.php"); ?>
     </body>
 
 </html>

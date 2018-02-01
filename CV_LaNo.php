@@ -13,19 +13,7 @@
 
      </head>
     <body>
-        <header>
-            <section id="title">
-              <!-- titre du site ici -->          
-                <img src="img/logo2.png" alt="logo" /> 
-            </section>
-            <section id="topmenu">
-                <!--- Menu ici --->
-                <div class="scrollmenu">
-                  <a href="index.html" class="fa fa-home fa-3x"></a>
-                  <a href="CV_Menu.html" class="active fa fa-book fa-3x"></a>
-                </div>
-            </section>
-        </header>
+<?php include("includes/mainMenu.php"); ?>
 		<main>
 			<header>
 				<img id="portrait" src="https://img4.hostingpics.net/pics/373367loran.png" title="portrait">
@@ -37,8 +25,8 @@
 					<ul>
 						<li>Date - Date : Tivoli, Petit-Lancy, 1ère à 6éme</li>
 						<li>Date - Date : Cycle d'Orientation des Grandes-Communes, Onex, 7éme à 9ème</li>
-						<li>Date - Date : Ecole de Culture Générale Ella-Maillart, Carouge, 1ère</li>        
-						<li>Date - Date : Centre de Formation Professionel Technique, Onex, 1ère à 4ème</li>      
+						<li>Date - Date : Ecole de Culture Générale Ella-Maillart, Carouge, 1ère</li>
+						<li>Date - Date : Centre de Formation Professionel Technique, Onex, 1ère à 4ème</li>
 					</ul>
 				</div>
 			</div>
@@ -70,12 +58,9 @@
 					<ul>
 						<li>Capable de créer un CV en HTML</li>
 					</ul>
-				</div>      
+				</div>
 			</div>
-		</main>         
-	        <footer>
-                <!--- Crédit créateurs ici --->
-                <p>Site réalisé par la classe ESIG-A-1</p>
-        </footer>
+		</main>
+<?php include("includes/footer.php"); ?>
 		</body>
 </html>
