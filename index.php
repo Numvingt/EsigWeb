@@ -11,32 +11,17 @@
         <link rel="stylesheet" type="text/css" href="style.css">
    </head>
     <body>
-        <header>
-            <section id="title">
-              <!--- titre du site ici --->          
-                <img src="img/logo2.png" alt="logo" /> 
-            </section>
-            <section id="topmenu">
-                <!--- Menu ici --->
-                <div class="scrollmenu">
-                  <a href="index.html" class="active fa fa-home fa-3x"></a>
-                  <a href="CV_Menu.html" class="fa fa-book fa-3x"></a>
-                </div>
-            </section>
-        </header>
+<?php include("includes/mainMenu.php"); ?>
         <main>
-            <!--- Contenu site ici --->           
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex 
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa 
+            <!--- Contenu site ici --->
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa
             qui officia deserunt mollit anim id est laborum.</p>
         </main>
-        <footer>
-                <!--- Crédit créateurs ici --->
-                <p>Site réalisé par la classe ESIG-A-1</p>
-        </footer>
+<?php include("includes/footer.php"); ?>
     </body>
 </html>
