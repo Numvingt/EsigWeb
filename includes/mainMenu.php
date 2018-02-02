@@ -6,8 +6,8 @@
     <section id="topmenu">
         <!--- Menu ici --->
         <div class="scrollmenu">
-          <a href="index.html" class="active fa fa-home fa-3x"></a>
-          <a href="CV_Menu.html" class="fa fa-book fa-3x"></a>
+          <a href="index.php" class="active fa fa-home fa-3x"></a>
+          <a href="CV_Menu.php" class="fa fa-book fa-3x"></a>
         </div>
     </section>
 </header>
