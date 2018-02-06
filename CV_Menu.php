@@ -19,14 +19,14 @@
                         <!--- Contenu site ici --->
                         <ul id="rig">
                             <li>
-                                <a class="rig-cell" href="CV_LaNo.html">
+                                <a class="rig-cell" href="CV_LaNo.php">
                                     <img class="rig-img" src="img/template2.png">
                                     <span class="rig-overlay"></span>
                                     <span class="rig-text">Laurent Nosella</span>
                                 </a>
                             </li>
                             <li>
-                                <a class="rig-cell" href="CV_AdHa.html">
+                                <a class="rig-cell" href="CV_AdHa.php">
                                     <img class="rig-img" src="img/template2.png">
                                     <span class="rig-overlay"></span>
                                     <span class="rig-text">Admira Halili</span>
