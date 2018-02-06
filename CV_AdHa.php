@@ -13,7 +13,7 @@
 
      </head>
     <body>
-<?php include("includes/mainMenu.php"); ?>
+<?php include("includes/subMenu.php"); ?>
 		<main class="centrepage">
 			<header>
 				<br>
