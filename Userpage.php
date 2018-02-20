@@ -1,3 +1,7 @@
+<?php
+
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,7 +19,8 @@
         <main>
             <!--- Contenu page ici --->
             <form method="post" action="Userpage.php">
-              
+              <input type="text" name="prenom"/>
+              <input type="submit" name="valider"/>
             </form>
         </main>
 <?php include("includes/footer.php"); ?>
