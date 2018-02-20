@@ -14,7 +14,9 @@
 <?php include("includes/UserPageMenu.php"); ?>
         <main>
             <!--- Contenu page ici --->
-
+            <form method="post" action="Userpage.php">
+              
+            </form>
         </main>
 <?php include("includes/footer.php"); ?>
     </body>
