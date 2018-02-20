@@ -1,7 +1,3 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,6 +18,18 @@
               <input type="text" name="prenom"/>
               <input type="submit" name="valider"/>
             </form>
+            <p>
+              <?php
+              if (isset ($_POST['prenom']))
+              {
+              echo 'Bonjour' . " " . $_POST['prenom'];
+              }
+              else
+              {
+                echo 'Entrez votre nom';
+              }
+              ?>
+            </p>
         </main>
 <?php include("includes/footer.php"); ?>
     </body>
