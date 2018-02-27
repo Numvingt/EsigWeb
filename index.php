@@ -26,8 +26,7 @@ $time = date("G:i T");
           else:
             echo 'Bonjour';
           endif;
-            ?>
-            , nous sommes le <?php echo $today ?><br/>
+            ?>, nous sommes le <?php echo $today ?><br/>
             Il est <?php echo $time?>
           </p>
         </main>
