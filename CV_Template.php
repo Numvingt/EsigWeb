@@ -11,7 +11,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-<?php include("includes/subMenu.php"); ?>
+<?php include("includes/mainMenu.php"); ?>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-10">

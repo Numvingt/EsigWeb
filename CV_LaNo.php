@@ -13,7 +13,7 @@
 
      </head>
     <body>
-<?php include("includes/subMenu.php"); ?>
+<?php include("includes/mainMenu.php"); ?>
 		<main>
 			<header>
 				<img id="portrait" src="https://img4.hostingpics.net/pics/373367loran.png" title="portrait">

@@ -11,22 +11,24 @@
         <link rel="stylesheet" type="text/css" href="style.css">
    </head>
     <body>
-<?php include("includes/UserPageMenu.php"); ?>
+<?php include("includes/mainMenu.php"); ?>
         <main>
             <!--- Contenu page ici --->
-            <form method="post" action="Userpage.php">
-              <input type="text" name="prenom"/>
-              <input type="submit" name="valider"/>
-            </form>
             <p>
               <?php
-              if (isset ($_POST['prenom']))
+              if (isset($_POST['prenom']) AND isset($_POST['mdp']) AND $_POST['mdp '] == "Esig")
               {
               echo 'Bonjour' . " " . $_POST['prenom'];
               }
               else
-              {
-                echo 'Entrez votre nom';
+              {?>
+                <form method="post" action="Userpage.php">
+                  <input type="text" name="prenom"/>
+                  <input type="password" name="mdp"/>
+                  <input type="submit" name="valider"/>
+                </form>
+              <?php
+                echo 'Veuillez vous connecter';
               }
               ?>
             </p>

@@ -1,14 +1,24 @@
+<?php
+function active($current_page){
+  $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
+  $url = end($url_array);
+  if($current_page == $url){
+      //echo 'active'; //class name in css
+      echo 'active';
+  }
+}
+?>
 <header>
-    <section id="title">
-      <!--- titre du site ici --->
-        <img src="img/logo2.png" alt="logo" />
-    </section>
-    <section id="topmenu">
-        <!--- Menu ici --->
-        <div class="scrollmenu">
-          <a href="index.php" class="active fa fa-home fa-3x"></a>
-          <a href="CV_Menu.php" class="fa fa-book fa-3x"></a>
-          <a href="Userpage.php" class="fa fa-user-circle fa-3x"></a>
-        </div>
-    </section>
+  <section id="title">
+    <!--- titre du site ici --->
+    <img src="img/logo2.png" alt="logo" />
+  </section>
+  <section id="topmenu">
+      <!--- Menu ici --->
+      <div class="scrollmenu">
+          <a class="<?php active('index.php');?> fa fa-home fa-3x" href="index.php"></a>
+          <a class="<?php active('CV_Menu.php');?> fa fa-book fa-3x" href="CV_Menu.php"></a>
+          <a class="<?php active('Userpage.php');?> fa fa-user-circle fa-3x" href="Userpage.php"></a>
+      </div>
+  </section>
 </header>
