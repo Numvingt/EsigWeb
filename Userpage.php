@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,22 +19,27 @@
             <!--- Contenu page ici --->
             <p>
               <?php
-              if ((isset($_POST['prenom']) AND isset($_POST['mdp']))):
-                if ($_POST['mdp']=='esig'):
-                    echo 'Bonjour' . " " . $_POST['prenom'];
-                else:
-                  ?>
-                  <p>Erreur dans le mot de passe</p><br/>
-                  <button type="button" onclick="history.back();">Back</button>
-                  <?php
-                endif;
-              else: ?>
-                <p>Veuillez vous connecter</p>
-                <form method="post" action="Userpage.php">
-                  <input type="text" name="prenom"/>
-                  <input type="password" name="mdp"/>
-                  <input type="submit" name="valider"/>
-                </form>
+              if (isset($_SESSION['prenom'])):
+                echo 'Bonjour '.$_SESSION['prenom'];
+                <button type="button" onclick="history.back();">Back</button>
+              else:
+                if ((isset($_POST['prenom']) AND isset($_POST['mdp']))):
+                  if ($_POST['mdp']=='esig'):
+                      echo 'Bonjour' . " " . $_POST['prenom'];
+                      $_SESSION['prenom'] = $_POST['prenom'];
+                  else:
+                    ?>
+                    <p>Erreur dans le mot de passe</p><br/>
+                    <button type="button" onclick="history.back();">Back</button>
+                  <?php endif; ?>
+                <?php else: ?>
+                  <p>Veuillez vous connecter</p>
+                  <form method="post" action="Userpage.php">
+                    <input type="text" name="prenom"/>
+                    <input type="password" name="mdp"/>
+                    <input type="submit" name="valider"/>
+                  </form>
+                <?php endif; ?>
               <?php endif; ?>
             </p>
         </main>

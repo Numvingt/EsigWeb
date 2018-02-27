@@ -1,4 +1,5 @@
 <?php
+session_start();
 $today= date("d/m/Y");
 $time = date("G:i T");
 ?>
@@ -18,10 +19,17 @@ $time = date("G:i T");
 <?php include("includes/mainMenu.php"); ?>
         <main>
             <!--- Contenu site ici --->
-            <p>Bonjour, nous sommes le <?php echo $today ?><br/>
-              Il est <?php echo $time?>
-
-            </p>
+          <p>
+          <?php
+          if (isset($_SESSION['prenom'])):
+            echo 'Bonjour '. $_SESSION['prenom'];
+          else:
+            echo 'Bonjour';
+          endif;
+            ?>
+            , nous sommes le <?php echo $today ?><br/>
+            Il est <?php echo $time?>
+          </p>
         </main>
 <?php include("includes/footer.php"); ?>
     </body>
