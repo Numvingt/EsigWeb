@@ -16,21 +16,23 @@
             <!--- Contenu page ici --->
             <p>
               <?php
-              if (isset($_POST['prenom']) AND isset($_POST['mdp']) AND $_POST['mdp '] == "Esig")
-              {
-              echo 'Bonjour' . " " . $_POST['prenom'];
-              }
-              else
-              {?>
+              if ((isset($_POST['prenom']) AND isset($_POST['mdp']))):
+                if ($_POST['mdp']=='esig'):
+                    echo 'Bonjour' . " " . $_POST['prenom'];
+                else:
+                  ?>
+                  <p>Erreur dans le mot de passe</p><br/>
+                  <button type="button" onclick="history.back();">Back</button>
+                  <?php
+                endif;
+              else: ?>
+                <p>Veuillez vous connecter</p>
                 <form method="post" action="Userpage.php">
                   <input type="text" name="prenom"/>
                   <input type="password" name="mdp"/>
                   <input type="submit" name="valider"/>
                 </form>
-              <?php
-                echo 'Veuillez vous connecter';
-              }
-              ?>
+              <?php endif; ?>
             </p>
         </main>
 <?php include("includes/footer.php"); ?>

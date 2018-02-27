@@ -1,3 +1,7 @@
+<?php
+$today= date("d/m/Y");
+$time = date("G:i T");
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,13 +18,10 @@
 <?php include("includes/mainMenu.php"); ?>
         <main>
             <!--- Contenu site ici --->
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa
-            qui officia deserunt mollit anim id est laborum.</p>
+            <p>Bonjour, nous sommes le <?php echo $today ?><br/>
+              Il est <?php echo $time?>
+
+            </p>
         </main>
 <?php include("includes/footer.php"); ?>
     </body>
