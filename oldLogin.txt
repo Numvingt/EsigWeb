@@ -1,0 +1,25 @@
+              <?php if (isset($_SESSION['prenom'])): ?>
+                <?php echo 'Bonjour '. $_SESSION['prenom'] ?>
+                </br>
+                <a href="logOut.php">Logout</a>
+              <?php else:
+                if ((isset($_POST['prenom']) AND isset($_POST['mdp']))):
+                  if ($_POST['mdp']=='esig'):
+                      echo 'Bonjour' . " " . $_POST['prenom'];
+                      $_SESSION['prenom'] = $_POST['prenom'];?>
+                      </br>
+                      <a href="logOut.php">Logout</a>
+                  <?php else: ?>
+                    Erreur dans le mot de passe
+                    <br/>
+                    <a href="Userpage.php">Retour au login</a>
+                  <?php endif; ?>
+                <?php else: ?>
+                  <p>Veuillez vous connecter</p>
+                  <form method="post" action="Userpage.php">
+                    <input type="text" name="prenom"/>
+                    <input type="password" name="mdp"/>
+                    <input type="submit" name="valider"/>
+                  </form>
+                <?php endif; ?>
+              <?php endif; ?>

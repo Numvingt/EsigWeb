@@ -19,6 +19,9 @@ function active($current_page){
           <a class="<?php active('index.php');?> fa fa-home fa-3x" href="index.php"></a>
           <a class="<?php active('CV_Menu.php');?> fa fa-book fa-3x" href="CV_Menu.php"></a>
           <a class="<?php active('Userpage.php');?> fa fa-user-circle fa-3x" href="Userpage.php"></a>
+          <?php if (isset($_SESSION['prenom'])): ?>
+          <a class="<?php active('Modif.php');?> fa fa-edit fa-3x" href="#"></a>
+          <?php endif; ?>
       </div>
   </section>
 </header>
