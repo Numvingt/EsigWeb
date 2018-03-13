@@ -1,12 +1,21 @@
 <?php
 session_start();
+
+try {
+  //connexion base
+  $bdd = new PDO('mysql:host=localhost;dbname=test','root','');
+
+//si aucune erreur
+$reponse = $bdd->query('SELECT * FROM jeux_video ORDER BY nom LIMIT 0,5'); //stockage résultat query
+$reponse2 = $bdd->query('SELECT nom,prix FROM jeux_video ORDER BY prix LIMIT 0, 5'); //limit tronque résultat, commence 0 et prend 10 enregistrements
+
 $today= date("d/m/Y");
 $time = date("G:i T");
 
-$compteur = fopen('files/compteur.txt','r+'); //ouverture en read & write
+$compteur = fopen('files/compteur.txt','r+'); //ouverture read & write
 $comptPages = fgets($compteur); //récup 1 ligne
 $comptPages++; //increment ligne
-fseek($compteur,0); //retour au début ligne
+fseek($compteur,0); //retour début ligne
 fputs($compteur,$comptPages); //remplacement contenu par increment
 fclose($compteur); //fermeture
 ?>
@@ -43,7 +52,84 @@ fclose($compteur); //fermeture
             <?php echo $comptPages ?>
              fois
           </p>
+          <?php while ($donnees = $reponse->fetch()){ ?>
+            <p>
+              <strong>Jeu</strong> : <?php echo $donnees['nom']; ?><br/>
+              Le possesseur de ce jeu est : <?php echo $donnees['possesseur']; ?> et il le vend à <?php echo $donnees['prix']; ?> euros! <br/>
+              Ce jeu fonctionne sur <?php echo $donnees['console']; ?> et on peut y jouer à <?php echo $donnees['nbre_joueurs_max']; ?> au maximum. <br/>
+              <?php echo $donnees['possesseur']; ?> a laissé ces commentaires sur <?php echo $donnees['nom']; ?> : <em><?php echo $donnees['commentaires'];?></em>
+            </p>
+            <?php } ?>
+            <?php $reponse->closeCursor(); ?>
+
+            <?php while ($donnees = $reponse2->fetch()){ ?>
+              <?php echo $donnees['nom'] . ' coûte ' . $donnees['prix'] . ' EUR<br/>';?>
+            <?php } ?>
+            <?php $reponse2->closeCursor(); ?>
+            <br/>
+
+            <?php
+            if (isset($_POST['prix']) AND ($_POST['prix']>=0)): //AND (is_numeric($_POST['prix']))):
+              $req = $bdd->prepare('SELECT nom, prix FROM jeux_video WHERE prix <= :prixMax');
+              //$req->execute(array('prixMax' => $_POST['prix'])); //Utilisation variable post
+              $req->bindParam(':prixMax', $_POST['prix'], PDO::PARAM_INT); //Vérification type prixMax
+              $req->execute();
+              echo '<ul>';
+              while ($donnees = $req->fetch()){
+                echo '<li>' . $donnees['nom'] . ' (' . $donnees['prix'] . ' EUR)</li>';
+              }
+              echo '</ul>';
+              $req->closeCursor();
+            else: ?>
+              <p>Veuillez saisir un prix</p>
+              <form method="post" action="index.php">
+                <input type="text" name="prix"/>
+                <input type="submit" name="valider"/>
+              </form>
+          <?php endif; ?>
+          <?php
+          if(isset($_POST['nom'])):
+            $req = $bdd->prepare('INSERT INTO jeux_video(nom, possesseur, console, prix, nbre_joueurs_max, commentaires) VALUES(:nom,:possesseur,:console,:prix,:nbre_joueurs_max,:commentaires)');
+            $req->bindParam(':nom', $_POST['nom'], PDO::PARAM_STR);
+            $req->bindParam(':possesseur', $_POST['possesseur'], PDO::PARAM_STR);
+            $req->bindParam(':console', $_POST['console'], PDO::PARAM_STR);
+            $req->bindParam(':prix', $_POST['prix'], PDO::PARAM_INT);
+            $req->bindParam(':nbre_joueurs_max', $_POST['nbre_joueurs_max'], PDO::PARAM_INT);
+            $req->bindParam(':commentaires', $_POST['commentaires'], PDO::PARAM_STR);
+            $req->execute();
+            //$req->execute(array(
+              //'nom' => $_POST['nom'],
+              //'possesseur' => $_POST['possesseur'],
+              //'console' => $_POST['console'],
+              //'prix' => $_POST['prix'],
+              //'nbre_joueurs_max' => $_POST['nbre_joueurs_max'],
+              //'commentaires' => $_POST['commentaires']
+            //));
+            echo 'Le jeu a bien été ajouté';
+          else: ?>
+          <br/>
+          <p>Veuillez saisir les informations pour le jeu</p>
+          <form method="post" action="index.php">
+            <ul>
+              <li><input type="text" name="nom" placeholder="Nom"/></li>
+              <li><input type="text" name="possesseur" placeholder="Possesseur"/></li>
+              <li><input type="text" name="console" placeholder="Console"/></li>
+              <li><input type="text" name="prix" placeholder="Prix"/></li>
+              <li><input type="text" name="nbre_joueurs_max" placeholder="Nombre joueurs max"/></li>
+              <li><input type="text" name="commentaires" placeholder="Commentaires"/></li>
+              <input type="submit" name="valider"/>
+            </ul>
+          </form>
+        <?php endif; ?>
+          <?php
+          }
+          catch (Exception $e)
+          {
+            //Si erreur, kill connection
+            die('Erreur : ' . $e->getMessage());
+          }
+          ?>
         </main>
-<?php include("includes/footer.php"); ?>
+        <?php include("includes/footer.php"); ?>
     </body>
 </html>
