@@ -4,6 +4,8 @@ session_start();
 try {
   //connexion base
   $bdd = new PDO('mysql:host=localhost;dbname=test','root','');
+  //Gérer erreur
+  $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 //si aucune erreur
 $reponse = $bdd->query('SELECT * FROM jeux_video ORDER BY nom LIMIT 0,5'); //stockage résultat query
@@ -69,9 +71,8 @@ fclose($compteur); //fermeture
             <br/>
 
             <?php
-            if (isset($_POST['prix']) AND ($_POST['prix']>=0)): //AND (is_numeric($_POST['prix']))):
+            if (isset($_POST['prix']) AND ($_POST['prix']>=0)):
               $req = $bdd->prepare('SELECT nom, prix FROM jeux_video WHERE prix <= :prixMax');
-              //$req->execute(array('prixMax' => $_POST['prix'])); //Utilisation variable post
               $req->bindParam(':prixMax', $_POST['prix'], PDO::PARAM_INT); //Vérification type prixMax
               $req->execute();
               echo '<ul>';
@@ -97,14 +98,6 @@ fclose($compteur); //fermeture
             $req->bindParam(':nbre_joueurs_max', $_POST['nbre_joueurs_max'], PDO::PARAM_INT);
             $req->bindParam(':commentaires', $_POST['commentaires'], PDO::PARAM_STR);
             $req->execute();
-            //$req->execute(array(
-              //'nom' => $_POST['nom'],
-              //'possesseur' => $_POST['possesseur'],
-              //'console' => $_POST['console'],
-              //'prix' => $_POST['prix'],
-              //'nbre_joueurs_max' => $_POST['nbre_joueurs_max'],
-              //'commentaires' => $_POST['commentaires']
-            //));
             echo 'Le jeu a bien été ajouté';
           else: ?>
           <br/>
@@ -123,10 +116,15 @@ fclose($compteur); //fermeture
         <?php endif; ?>
           <?php
           }
-          catch (Exception $e)
+          catch (PDOException $e)
           {
+            echo '<pre>';
+            echo $req;
+            echo '</pre>';
+            echo $e->getMessage();
+            die;
             //Si erreur, kill connection
-            die('Erreur : ' . $e->getMessage());
+            //die('Erreur : ' . $e->getMessage());
           }
           ?>
         </main>

@@ -1,7 +1,7 @@
 <?php
 try {
   //connexion base
-  $bdd = new PDO('mysql:host=localhost;dbname=test','root','');
+  $bdd = new PDO('mysql:host=localhost;dbname=esigweb','root','');
 }
 catch (Exception $e)
 {

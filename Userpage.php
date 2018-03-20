@@ -22,13 +22,15 @@ include("scripts/logIn.php");
             case 0: ?>
                 <p>Veuillez vous connecter</p>
                 <form method="post" action="Userpage.php">
-                  <input type="text" name="prenom"/>
-                  <input type="password" name="mdp"/>
+                  <input type="text" name="nickname"/>
+                  <input type="password" name="password"/>
                   <input type="submit" name="valider"/>
                 </form>
+                <br/>
+                <a href="SignUp.php">S'inscrire</a>
               <?php break;
               case 1:
-                echo 'Bonjour '. $_SESSION['prenom']; ?>
+                echo 'Bonjour '. $_SESSION['nickname']; ?>
                 </br>
                 <a href="scripts/logOut.php">Logout</a>
                 <?php break;
