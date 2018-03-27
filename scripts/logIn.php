@@ -12,8 +12,8 @@ else:
     $req->execute();
     $result = $req->fetch();
     //$isPasswordCorrect = password_verify($_POST['mdp'], $result['pass']);
-    echo password_hash($_POST['password'], PASSWORD_DEFAULT) . "<br>";
-    echo  $_POST['nickname'] . "+" . $result["password"] . "<br>";
+    //echo password_hash($_POST['password'], PASSWORD_DEFAULT) . "<br>";
+    //echo  $_POST['nickname'] . "+" . $result["password"] . "<br>";
     if(password_hash($_POST['password'], PASSWORD_DEFAULT) == $result["password"]):
       $login=1; //le user est co
       $_SESSION['id'] = $result["id"];
@@ -22,7 +22,6 @@ else:
     else:
       $login=2; //erreur mdp
     endif;
-
   else:
     $login=0; //user pas co
   endif;
