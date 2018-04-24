@@ -14,12 +14,6 @@ $reponse2 = $bdd->query('SELECT nom,prix FROM jeux_video ORDER BY prix LIMIT 0, 
 $today= date("d/m/Y");
 $time = date("G:i T");
 
-$compteur = fopen('files/compteur.txt','r+'); //ouverture read & write
-$comptPages = fgets($compteur); //récup 1 ligne
-$comptPages++; //increment ligne
-fseek($compteur,0); //retour début ligne
-fputs($compteur,$comptPages); //remplacement contenu par increment
-fclose($compteur); //fermeture
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,8 +34,8 @@ fclose($compteur); //fermeture
           <?php
           if (isset($_SESSION['prenom'])): //Si user co
             echo 'Bonjour '. $_SESSION['prenom'];
-          elseif (isset($_COOKIE['prenom'])): //si cookie existe
-            echo 'Bonjour '. $_COOKIE['prenom'];
+          //elseif (isset($_COOKIE['prenom'])): //si cookie existe
+            //echo 'Bonjour '. $_COOKIE['prenom'];
           else:
             echo 'Bonjour';
           endif;?>, nous sommes le
@@ -51,7 +45,7 @@ fclose($compteur); //fermeture
             <?php echo $time ?>
             <br/>
             La page a été vue
-            <?php echo $comptPages ?>
+            <?php include("includes/counter.php"); ?>
              fois
           </p>
           <?php while ($donnees = $reponse->fetch()){ ?>
