@@ -10,7 +10,6 @@
         <script src="https://use.fontawesome.com/e064ae86ba.js"></script>
         <link rel="stylesheet" type="text/css" href="CV/LaNos/bootstrap-css.css">
         <link rel="stylesheet" type="text/css" href="style.css">
-
      </head>
     <body>
 <?php include("includes/mainMenu.php"); ?>
