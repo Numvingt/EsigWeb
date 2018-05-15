@@ -32,8 +32,8 @@ $time = date("G:i T");
         <main>
           <p>
           <?php
-          if (isset($_SESSION['prenom'])): //Si user co
-            echo 'Bonjour '. $_SESSION['prenom'];
+          if (isset($_SESSION['nickname'])): //Si user co
+            echo 'Bonjour '. $_SESSION['nickname'];
           //elseif (isset($_COOKIE['prenom'])): //si cookie existe
             //echo 'Bonjour '. $_COOKIE['prenom'];
           else:

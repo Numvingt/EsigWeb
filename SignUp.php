@@ -22,28 +22,33 @@ try {
         <?php include("includes/mainMenu.php"); ?>
         <main>
           <?php
-          if(isset($_POST['pseudo'])):
-            $pass_hache = password_hash($_POST['mdp'], PASSWORD_DEFAULT);
-
-            $req = $bdd->prepare('INSERT INTO utilisateur(nickname, password, email) VALUES(:nickname,:password,:email)');
-            $req->bindParam(':nickname', $_POST['pseudo'], PDO::PARAM_STR);
-            $req->bindParam(':password', $pass_hache, PDO::PARAM_STR);
-            $req->bindParam(':email', $_POST['email'], PDO::PARAM_STR);
-            $req->execute();
-            echo 'Vous êtes inscrits ! <br/>';
+          if(isset($_POST['nickname'])):
+            $sanitized_email = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL); //Nettoyage email
+            if(filter_var($sanitized_email,FILTER_VALIDATE_EMAIL)): //si email valide
+              $sanitized_nickname = filter_var($_POST['nickname'],FILTER_SANITIZE_STRING); //Nettoyage nickname
+              $sanitized_password = filter_var($_POST['password'],FILTER_SANITIZE_STRING); //Nettoyage password
+              $pass_hache = password_hash($sanitized_password, PASSWORD_DEFAULT); //Hash du mdp
+              $req = $bdd->prepare('INSERT INTO utilisateur(nickname, password, email) VALUES(:nickname,:password,:email)');
+              $req->bindParam(':nickname', $sanitized_nickname, PDO::PARAM_STR);
+              $req->bindParam(':password', $pass_hache, PDO::PARAM_STR);
+              $req->bindParam(':email', $sanitized_email, PDO::PARAM_STR);
+              $req->execute();
+              echo 'Vous êtes inscrits ! <br/>';
+            else:
+              echo 'Erreur dans votre email ! <br/>';
+            endif;
           else: ?>
           <p>Veuillez remplir le formulaire</p>
           <form method="post" action="SignUp.php">
             Pseudo (20 caractères max):<br/>
-            <input type="text" name="pseudo"/><br/>
+            <input type="text" name="nickname"/><br/>
             Mot de passe (20 caractères max):<br/>
-            <input type="password" name="mdp"/><br/>
+            <input type="password" name="password"/><br/>
             E-Mail (100 caractères max):<br/>
             <input type="email" name="email"/><br/>
             <input type="submit" name="valider"/>
           </form>
-        <?php endif; ?>
-          <?php
+        <?php endif;
           }
           catch (Exception $e)
           {
