@@ -14,7 +14,7 @@ try {
         $req->execute();
         $result = $req->fetch();
         if(password_verify($sanitized_password,$result['password'])):
-          $login=1; //le user est co
+          $login=1; //user connected
           $_SESSION['id'] = $result['id'];
           $_SESSION['nickname'] = $sanitized_nickname;
           setcookie('nickname',$_SESSION['nickname'],time() + 365*24*3600,null,null,false,true);
