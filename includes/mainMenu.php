@@ -20,7 +20,7 @@ function active($current_page){
           <a class="<?php active('CV_Menu.php');?> fa fa-book fa-3x" href="CV_Menu.php"></a>
           <a class="<?php active('Userpage.php');?> fa fa-user-circle fa-3x" href="Userpage.php"></a>
           <?php if (isset($_SESSION['nickname'])): ?>
-          <a class="<?php active('Modif.php');?> fa fa-edit fa-3x" href="#"></a>
+          <a class="<?php active('ModifCV.php');?> fa fa-edit fa-3x" href="ModifCV.php"></a>
           <?php endif; ?>
       </div>
   </section>

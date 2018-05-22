@@ -1,13 +1,11 @@
 <?php
 session_start();
-$today= date("d/m/Y");
-$time = date("G:i T");
 
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>ESIG Accueil</title>
+        <title>Modification du CV</title>
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,23 +18,14 @@ $time = date("G:i T");
       <?php include("includes/mainMenu.php"); ?>
         <main>
           <p>
-          <?php
-          if (isset($_SESSION['nickname'])): //Si user co
-            echo 'Bonjour '. $_SESSION['nickname'];
-          //elseif (isset($_COOKIE['prenom'])): //si cookie existe
-            //echo 'Bonjour '. $_COOKIE['prenom'];
-          else:
-            echo 'Bonjour';
-          endif;?>, nous sommes le
-            <?php echo $today ?>
-            <br/>
-            Il est
-            <?php echo $time ?>
-            <br/>
-            La page a été vue
-            <?php include("includes/counter.php"); ?>
-             fois
+            Bienvenue sur la page de modification de votre CV
           </p>
+          <?php
+              include_once("scripts/gdoc.php");
+              $gdoc  = "1PeElgKpEDJbYhyHs3jqe-LkqVw_7EnoEfuPOVm8HYCY";
+              buildHtmlFromDoc($gdoc);
+              include("cache/_".$gdoc.".html");
+          ?>
         </main>
         <?php include("includes/footer.php"); ?>
     </body>

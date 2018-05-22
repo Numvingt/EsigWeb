@@ -50,13 +50,9 @@ function buildHtmlFromDoc($name)
     $content = $content.'<div style="text-align:right;"><a href="https://docs.google.com/document/d/'.$name.'/edit" target="_blank"><img name="gcms" src="ressources/edit.png" width="20" height="20" title="Editer la page" alt="Editer la page" border="0" onMouseOver="gcms.src=\'ressources/edit_over.png\'" onMouseOut="gcms.src=\'ressources/edit.png\'" /></a></div>';
 
     $inF = fopen('cache/_'.$name.'.html',"w"); // Le contenu de la page est dans $content
-	if (!fwrite($inF,$content)) echo '<br/>Erreur d’&eacute;criture sur la page.<br/>';
+	if (!fwrite($inF,$content)) echo '<br/>Erreur d&#145;&eacute;criture sur la page.<br/>';
     fclose($inF);
 
 }
 
 ?>
-
-
-
-
